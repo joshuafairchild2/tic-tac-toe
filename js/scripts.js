@@ -66,6 +66,7 @@ $(function() {
 		var player2Name = $('input#player2name').val();
 		$(this).hide()
 		$('#board').show();
+		$('#turn-player').text(player1Name);
 
 		gameBoard = new Board();
 	 	player1 = new Player(player1Name, 'X');
@@ -79,12 +80,14 @@ $(function() {
 		$(this).click(function() {
 			var boardCoordX = $(this).data('xcoord');
 			var boardCoordY = $(this).data('ycoord');
+			$('#turn-player').text(turnPlayer(turnCount, player1, player2).name)
 
 			if ((gameBoard.findSpot(boardCoordX, boardCoordY).length === 0) && !(gameBoard.checkForWin(gameBoard))) {
 				turnCount += 1;
 				$(this).text(turnPlayer(turnCount, player1, player2).mark);
 				if (gameBoard.checkForTie(turnCount)) {
 					$('#tie').show();
+					$('#turn-guide').hide();
 				} else {
 					gameBoard.findSpot(boardCoordX, boardCoordY).push(turnPlayer(turnCount, player1, player2).mark);
 				}
@@ -92,22 +95,18 @@ $(function() {
 
 			if (gameBoard.checkForWin(gameBoard)) {
 				$('#victory').show();
-				$('span#winner-name').text(turnPlayer(turnCount, player1, player2).name)
+				$('span#winner-name').text(turnPlayer(turnCount, player1, player2).name);
+				$('#turn-guide').hide();
 			}
 		});
 	});
 
-	$('button#play-again').click(function() {
+	$('button.reset-button').click(function() {
 		$('.col-xs-4').empty();
 		gameBoard.reset(gameBoard);
 		$(this).parent().hide();
 		turnCount = 0;
-	})
-
-	$('button#tie-game-reset').click(function() {
-		$('.col-xs-4').empty();
-		gameBoard.reset(gameBoard);
-		$(this).parent().hide();
-		turnCount = 0;
-	})
+		$('#turn-player').text(player1.name);
+		$('#turn-guide').show();
+	});
 });
