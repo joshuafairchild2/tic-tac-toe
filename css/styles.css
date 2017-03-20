@@ -7,3 +7,7 @@
 #board, #victory, #tie {
   display: none;
 }
+
+.invisible {
+  visibility: hidden;
+}

@@ -87,7 +87,7 @@ $(function() {
 				$(this).text(turnPlayer(turnCount, player1, player2).mark);
 				if (gameBoard.checkForTie(turnCount)) {
 					$('#tie').show();
-					$('#turn-guide').hide();
+					$('#turn-guide').addClass('invisible');
 				} else {
 					gameBoard.findSpot(boardCoordX, boardCoordY).push(turnPlayer(turnCount, player1, player2).mark);
 				}
@@ -96,7 +96,7 @@ $(function() {
 			if (gameBoard.checkForWin(gameBoard)) {
 				$('#victory').show();
 				$('span#winner-name').text(turnPlayer(turnCount, player1, player2).name);
-				$('#turn-guide').hide();
+				$('#turn-guide').addClass('invisible');
 			}
 		});
 	});
@@ -107,6 +107,6 @@ $(function() {
 		$(this).parent().hide();
 		turnCount = 0;
 		$('#turn-player').text(player1.name);
-		$('#turn-guide').show();
+		$('#turn-guide').removeClass('invisible');
 	});
 });
