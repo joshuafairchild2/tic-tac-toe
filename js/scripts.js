@@ -72,18 +72,24 @@ var turnPlayer = function(turnCount, player1, player2) {
 //ui logic
 $(function() {
 	$('form#players').submit(function(event) {
-		//store values of each player's name, hide the form, show the UI gameboard, display player 1 as turn player
+		//store values of each player's name
 		var player1Name = $('input#player1name').val();
 		var player2Name = $('input#player2name').val();
-		$(this).hide()
-		$('#board').show();
-		$('#turn-player').text(player1Name);
 
-		//store within global variables: new Board object, 2 new Player objects, number representing the current turn (initializes at 0)
-		gameBoard = new Board();
-	 	player1 = new Player(player1Name, 'X');
-	 	player2 = new Player(player2Name, 'O')
-		turnCount = 0;
+		//if player1Name and player2Name have a value: hide the form, show the UI gameboard, display player 1 as turn player
+		if ((player1Name) && (player2Name)) {
+			$(this).hide()
+			$('#board').show();
+			$('#turn-player').text(player1Name);
+
+			//store within global variables: new Board object, 2 new Player objects, number representing the current turn (initializes at 0)
+			gameBoard = new Board();
+		 	player1 = new Player(player1Name, 'X');
+		 	player2 = new Player(player2Name, 'O')
+			turnCount = 0;
+		} else {
+			alert('Please enter a name for each player')
+		}
 		event.preventDefault();
 	});
 
