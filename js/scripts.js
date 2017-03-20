@@ -36,6 +36,12 @@ Board.prototype.checkForWin = function(board) {
 	});
 }
 
+Board.prototype.checkForTie = function(turnCount) {
+	if (turnCount === 9) {
+		alert('tie');
+	}
+}
+
 var turnPlayer = function(turnCount, player1, player2) {
 	if (turnCount % 2 !== 0) {
 		return player1;
@@ -60,6 +66,7 @@ $(function() {
 			var boardCoordY = $(this).data('ycoord');
 			if (gameBoard.findSpot(boardCoordX, boardCoordY).length === 0) {
 				turnCount += 1;
+				gameBoard.checkForTie(turnCount);
 				$(this).text(turnPlayer(turnCount, player1, player2).mark);
 				gameBoard.findSpot(boardCoordX, boardCoordY).push(turnPlayer(turnCount, player1, player2).mark);
 				// console.log(gameBoard.findSpot(boardCoordX, boardCoordY));
