@@ -82,9 +82,12 @@ $(function() {
 
 			if ((gameBoard.findSpot(boardCoordX, boardCoordY).length === 0) && !(gameBoard.checkForWin(gameBoard))) {
 				turnCount += 1;
-				gameBoard.checkForTie(turnCount);
 				$(this).text(turnPlayer(turnCount, player1, player2).mark);
-				gameBoard.findSpot(boardCoordX, boardCoordY).push(turnPlayer(turnCount, player1, player2).mark);
+				if (gameBoard.checkForTie(turnCount)) {
+					$('#tie').show();
+				} else {
+					gameBoard.findSpot(boardCoordX, boardCoordY).push(turnPlayer(turnCount, player1, player2).mark);
+				}
 			}
 
 			if (gameBoard.checkForWin(gameBoard)) {
@@ -98,5 +101,13 @@ $(function() {
 		$('.col-xs-4').empty();
 		gameBoard.reset(gameBoard);
 		$(this).parent().hide();
+		turnCount = 0;
+	})
+
+	$('button#tie-game-reset').click(function() {
+		$('.col-xs-4').empty();
+		gameBoard.reset(gameBoard);
+		$(this).parent().hide();
+		turnCount = 0;
 	})
 });

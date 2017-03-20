@@ -4,6 +4,6 @@
   width: 200px;
 }
 
-#board, #victory {
+#board, #victory, #tie {
   display: none;
 }
