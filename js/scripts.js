@@ -14,10 +14,26 @@ Board.prototype.findSpot = function(x, y) {
   return this[y][x];
 }
 
-Board.prototype.checkForWin = function() {
-	if (this.findSpot(0,0).length === 1 && this.findSpot(1,0).length === 1 && this.findSpot(2,0).length === 1) {
-		alert('Winner!');
-	}
+Board.prototype.checkForWin = function(board) {
+	var winningCombos = [[[0,0],[1,0],[2,0]],
+											 [[0,1],[1,1],[2,1]],
+											 [[0,2],[1,2],[2,2]],
+											 [[0,0],[0,1],[0,2]],
+											 [[1,0],[1,1],[1,2]],
+											 [[2,0],[2,1],[2,2]],
+											 [[0,0],[1,1],[2,2]],
+											 [[2,0],[1,1],[0,2]]]
+
+	winningCombos.forEach(function(winningCombo) {
+		var marks = ['X', 'O'];
+
+		marks.forEach(function(mark) {
+			if ((board.findSpot((winningCombo[0][0]), (winningCombo[0][1])) == mark) && (board.findSpot((winningCombo[1][0]), (winningCombo[1][1])) == mark) &&
+			(board.findSpot((winningCombo[2][0]), (winningCombo[2][1])) == mark)) {
+				alert('winner');
+			}
+		});
+	});
 }
 
 var turnPlayer = function(turnCount, player1, player2) {
@@ -28,6 +44,7 @@ var turnPlayer = function(turnCount, player1, player2) {
 	}
 }
 
+
 //ui logic
 $(function() {
 	var player1Name = prompt('Player 1 enter your name:')
@@ -36,8 +53,6 @@ $(function() {
 	var player1 = new Player(player1Name, 'X');
 	var player2 = new Player(player2Name, 'O')
 	var turnCount = 0;
-	console.log(player1, player2);
-	console.log(gameBoard);
 
 	$('.col-xs-4').each(function() {
 		$(this).click(function() {
@@ -47,13 +62,9 @@ $(function() {
 				turnCount += 1;
 				$(this).text(turnPlayer(turnCount, player1, player2).mark);
 				gameBoard.findSpot(boardCoordX, boardCoordY).push(turnPlayer(turnCount, player1, player2).mark);
-				console.log(gameBoard);
+				// console.log(gameBoard.findSpot(boardCoordX, boardCoordY));
 			}
-			gameBoard.checkForWin();
+			gameBoard.checkForWin(gameBoard);
 		});
 	});
 });
-
-//issues:
-//game can't recognize a win
-//game can't recognize a scratch
