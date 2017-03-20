@@ -9,20 +9,18 @@
   </head>
   <body>
     <div class="container">
-      <div id="game-start">
-        <form id="players">
-          <h3>Who is playing?</h3>
-          <div class="form-group">
-            <label for="player1name">Player 1 Name</label>
-            <input type="text" class="form-control" id="player1name">
-          </div>
-          <div class="form-group">
-            <label for="player2name">Player 2 Name</label>
-            <input type="text" class="form-control" id="player2name">
-          </div>
-          <button type="submit" class="btn btn-info">Let's Play!</button>
-        </form>
-      </div>
+      <form id="players">
+        <h3>Who is playing?</h3>
+        <div class="form-group">
+          <label for="player1name">Player 1 Name</label>
+          <input type="text" class="form-control" id="player1name">
+        </div>
+        <div class="form-group">
+          <label for="player2name">Player 2 Name</label>
+          <input type="text" class="form-control" id="player2name">
+        </div>
+        <button type="submit" class="btn btn-info">Let's Play!</button>
+      </form>
       <div id='board'>
         <p id='turn-guide'>It is <span id="turn-player"></span>'s turn</p>
         <div class="row">
@@ -62,10 +60,12 @@
       <div id="victory">
         <h3><span id='winner-name'></span> won!</h3>
         <button class="btn btn-info btn-lg reset-button">Play Again</button>
+        <button class="btn btn-info btn-lg reset-button new-players">New Player Names</button>
       </div>
       <div id="tie">
         <h3>Uh-oh, nobody wins!</h3>
         <button class='btn btn-info btn-lg reset-button'>Play Again</button>
+        <button class="btn btn-info btn-lg reset-button new-players">New Player Names</button>
       </div>
     </div>
   </body>

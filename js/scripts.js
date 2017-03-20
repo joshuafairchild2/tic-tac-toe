@@ -129,5 +129,10 @@ $(function() {
 		turnCount = 0;
 		$('#turn-player').text(player1.name);
 		$('#turn-guide').removeClass('invisible');
+		//if the button that was clicked also has the class 'new-players', hide the board, clear the form and display the form
+		if ($(this).hasClass('new-players')) {
+			$('#board').hide();
+			$('form#players').show().trigger('reset');
+		}
 	});
 });
