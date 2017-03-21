@@ -1,13 +1,122 @@
-.col-xs-4 {
-  border: 1px solid black;
-  height: 200px;
-  width: 200px;
+body {
+  background-color: #99ddff;
 }
 
-#board, #victory, #tie {
+label {
+  font-family: fjalla one;
+  font-weight: lighter;
+  font-size: 16pt;
+}
+
+html, body, #body-wrapper {
+  height: 100%;
+}
+
+/*#players,*/
+#board
+ {
   display: none;
 }
 
-.invisible {
-  visibility: hidden;
+#players {
+  box-shadow: 0 0 5px 10px #f2f2f2;
+  width: 50%;
+  min-width: 575px;
+  margin: auto;
+  margin-top: 100px;
+  padding: 30px 0px 50px 0px;
+  border-radius: 25px;
+  background-color: #f2f2f2;
+}
+
+#board {
+  height: 100%;
+  width: 50%;
+  min-width: 550px;
+  max-height: 550px;
+  margin-bottom: 20px;
+}
+
+#names-button {
+  margin-top: 40px;
+  font-family: fjalla one;
+}
+
+#names-header {
+  text-align: center;
+  font-family: lobster;
+  font-size: 40pt;
+  width: 400px;
+  margin: auto;
+}
+
+#name1, #name2 {
+  width: 50%;
+  min-width: 200px;
+  margin: auto;
+  margin-top: 40px;
+}
+
+#turn-guide {
+  text-align: center;
+  margin: 0 0 20px 0;
+  font-family: fjalla one;
+  font-size: 20pt;
+  display: none;
+}
+
+#turn-player {
+  font-size: 24pt;
+}
+
+#turn-player-mark {
+  font-family: baloo bhaina;
+  font-size: 40px;
+}
+
+#game-messages {
+  /*margin-top: 130px;*/
+  font-family: fjalla one;
+  margin-bottom: 20px;
+}
+
+#row1 {
+  border-left: 3px solid black;
+  border-right: 3px solid black;
+  border-top: 3px solid black;
+}
+
+#row2 {
+  border-right: 3px solid black;
+  border-left: 3px solid black;
+}
+
+#row3 {
+  border-left: 3px solid black;
+  border-right: 3px solid black;
+  border-bottom: 3px solid black;
+}
+
+.game-message {
+  display: none;
+}
+
+.board-square {
+  border: 3px solid black;
+  height: 100%;
+  width: 33.333%;
+  padding: 0;
+  background-color: #f2f2f2;
+  font-size: 145px;
+  text-align: center;
+  font-family: baloo bhaina;
+  cursor: pointer;
+}
+
+.new-players {
+  margin-left: 10px;
+}
+
+.row {
+  height: 33.333%;
 }
