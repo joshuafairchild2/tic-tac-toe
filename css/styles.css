@@ -12,7 +12,6 @@ html, body, #body-wrapper {
   height: 100%;
 }
 
-/*#players,*/
 #board
  {
   display: none;
@@ -75,7 +74,6 @@ html, body, #body-wrapper {
 }
 
 #game-messages {
-  /*margin-top: 130px;*/
   font-family: fjalla one;
   margin-bottom: 20px;
 }
