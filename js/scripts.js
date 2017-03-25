@@ -143,11 +143,18 @@ $(function() {
 
 	//when a '.reset-button' is clicked
 	$('button.reset-button').click(function() {
-		
-		//empty the UI board and Board object of all data, hide the currently displayed message (win/tie), reset the turn counter, display player 1 as turn Player and show the 'turn player' message
+
+		//empty the UI board and Board object of all data
 		$('.board-square').empty();
 		gameBoard.reset(gameBoard);
 		$(this).parent().hide();
+
+		//if player1 won the game, reverse the players (player2 becomes player1, thus getting first turn)
+		if ((turnPlayer(turnCount, player1, player2).name === player1.name)) {
+			[player1, player2] = [player2, player1]
+		}
+
+		//reset the turn counter, display the info for turn player (player1)
 		turnCount = 0;
 		$('#turn-player').text(player1.name);
 		$('#turn-player-mark').text(player1.mark);
