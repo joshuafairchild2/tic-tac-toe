@@ -61,7 +61,6 @@ html, body, #body-wrapper {
   margin: 0 0 20px 0;
   font-family: fjalla one;
   font-size: 20pt;
-  display: none;
 }
 
 #turn-player {
@@ -75,7 +74,8 @@ html, body, #body-wrapper {
 
 #game-messages {
   font-family: fjalla one;
-  margin-bottom: 20px;
+  /*height: 800px;*/
+  /*width: 800px;*/
 }
 
 #row1 {
@@ -113,6 +113,14 @@ html, body, #body-wrapper {
 
 .new-players {
   margin-left: 10px;
+}
+
+.reset-button {
+  display: none;
+}
+
+.invisible {
+  visibility: hidden;
 }
 
 .row {

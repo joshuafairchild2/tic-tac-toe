@@ -92,7 +92,7 @@ $(function() {
 			$('#board').show();
 			$('#turn-player').text(player1Name);
 			$('#turn-player-mark').text('X');
-			$('#turn-guide').show();
+			$('#turn-guide').removeClass('invisible');
 
 			//store within global variables: new Board object, 2 new Player objects, and an integer representing the current turn (initializes at 0)
 			gameBoard = new Board();
@@ -129,14 +129,15 @@ $(function() {
 
 				//check for win/tie conditions and display/hide proper content accordingly
 				if (gameBoard.checkForWin(gameBoard)) {
-					$('#victory').show();
+					$('#game-messages').modal('show');
+					$('#victory, .victory').show();
 					$('span#winner-name').text(turnPlayer(turnCount, player1, player2).name);
-					$('#turn-guide').hide();
+					$('#turn-guide').addClass('invisible');
 				} else if (gameBoard.checkForTie(turnCount)) {
-					$('#tie').show();
-					$('#turn-guide').hide();
+					$('#game-messages').modal('show');
+					$('#tie, .tie').show();
+					$('#turn-guide').addClass('invisible');
 				}
-
 			}
 		});
 	});
@@ -147,7 +148,8 @@ $(function() {
 		//empty the UI board and Board object of all data
 		$('.board-square').empty();
 		gameBoard.reset(gameBoard);
-		$(this).parent().hide();
+		$('.reset-button').hide();
+		$('#game-messages').modal('hide');
 
 		//if player1 won the game, reverse the players (player2 becomes player1, thus getting first turn)
 		if ((turnPlayer(turnCount, player1, player2).name === player1.name)) {
@@ -158,7 +160,7 @@ $(function() {
 		turnCount = 0;
 		$('#turn-player').text(player1.name);
 		$('#turn-player-mark').text(player1.mark);
-		$('#turn-guide').show();
+		$('#turn-guide').removeClass('invisible');
 
 		//if the button that was clicked also has the class 'new-players', hide the board, clear the form and display the form
 		if ($(this).hasClass('new-players')) {
