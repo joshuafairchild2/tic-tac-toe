@@ -13,6 +13,9 @@
   </head>
   <body>
     <div class="container" id='body-wrapper'>
+
+      <!-- PLAYER NAMES -->
+
       <form id="players">
         <h3 id='names-header'>Who wants to play Tic Tac Toe?</h3>
         <div class="form-group" id='name1'>
@@ -27,31 +30,37 @@
           <button type="submit" class="btn btn-info btn-lg" id='names-button'>Let's Play!</button>
         </div>
       </form>
-      <div id='board' class="container">
-        <!-- <div id='game-messages'> -->
 
-          <div class="modal fade" id="game-messages" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-body">
-                  <div id="victory" class="text-center game-message">
-                    <h3><span id='winner-name'></span> won!</h3>
-                  </div>
-                  <div id="tie" class="text-center game-message">
-                    <h3>Uh-oh, nobody wins!</h3>
-                  </div>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-primary reset-button victory">Play Again</button>
-                  <button type="button" class="btn btn-secondary reset-button new-players victory">New Player Names</button>
-                  <button type="button" class='btn btn-primary reset-button tie'>Play Again</button>
-                  <button type="button" class="btn btn-secondary reset-button new-players tie">New Player Names</button>
-                </div>
+      <!-- END PLAYER NAMES -->
+
+      <!-- WIN/TIE MESSAGES MODAL -->
+
+      <div class="modal fade" id="game-messages" aria-hidden="true" data-backdrop='static'>
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-body">
+              <div id="victory" class="text-center game-message">
+                <h3><span id='winner-name'></span> won!</h3>
+              </div>
+              <div id="tie" class="text-center game-message">
+                <h3>Uh-oh, nobody wins!</h3>
               </div>
             </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary reset-button victory">Play Again</button>
+              <button type="button" class="btn btn-secondary reset-button new-players victory">New Player Names</button>
+              <button type="button" class='btn btn-primary reset-button tie'>Play Again</button>
+              <button type="button" class="btn btn-secondary reset-button new-players tie">New Player Names</button>
+            </div>
           </div>
+        </div>
+      </div>
 
-        <!-- </div> -->
+      <!-- END MODAL -->
+
+      <!-- GAME BOARD -->
+
+      <div id='board' class="container">
         <p id='turn-guide'>Turn player: <span id="turn-player"></span> (<span id='turn-player-mark'></span>)</p>
         <div class="row" id='row1'>
           <div class="col-xs-4 board-square" data-xcoord='0' data-ycoord='0'>
@@ -87,6 +96,9 @@
           </div>
         </div>
       </div>
+
+      <!-- END GAME BOARD -->
+
     </div>
   </body>
 </html>

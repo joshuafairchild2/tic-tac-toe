@@ -1,4 +1,4 @@
-//business logic
+/////  business logic  /////////////////////////////////////////////////
 //constructor function for an object storing the data of a 'Player'
 function Player(name, mark) {
 	this.name = name;
@@ -6,7 +6,7 @@ function Player(name, mark) {
 }
 
 
-//constructor function for an object that models a 3x3 "two dimensional" grid of empty arrays and stores data on squares that are marked (this is the logical counterpart to the user inferface grid that is the Tic Tac Toe board)
+//constructor function for an object that models a 3x3 "two dimensional" grid of empty arrays (this is the logical counterpart to the user inferface grid that is the Tic Tac Toe board)
 function Board() {
 	this[0] = [[],[],[]];
 	this[1] = [[],[],[]];
@@ -14,7 +14,7 @@ function Board() {
 }
 
 
-//returns the value of the array that is at the Board coordinates specified in the parameter
+//returns the contens of the array that is at the Board coordinates specified in the parameter
 Board.prototype.findSpot = function(x, y) {
   return this[y][x];
 }
@@ -22,8 +22,6 @@ Board.prototype.findSpot = function(x, y) {
 
 //returns true if a Player has a "winning combination" inside of the Board object (x-x-x/o-o-o)
 Board.prototype.checkForWin = function(board) {
-
-	//initialize 'win' variable
 	var win = false;
 
 	//array of the combinations that trigger a win (each 2-number array represents coordinates on the Board object)
@@ -51,7 +49,7 @@ Board.prototype.checkForWin = function(board) {
 }
 
 
-//returns true if every Board coordinate has a value and neither player has won
+//returns true if every Board coordinate has a value
 Board.prototype.checkForTie = function(turnCount) {
 	if (turnCount === 9) {
 		return true;
@@ -75,18 +73,17 @@ var turnPlayer = function(turnCount, player1, player2) {
 		return player2;
 	}
 }
+/////  end business logic  ////////////////////////////////////
 
 
-
-//ui logic
+/////  ui logic  //////////////////////////////////////////////
 $(function() {
 	$('form#players').submit(function(event) {
 
-		//store values of each player's name
 		var player1Name = $('input#player1name').val();
 		var player2Name = $('input#player2name').val();
 
-		//if player1Name and player2Name have a value and are different: hide the form, show the UI gameboard, display player 1 name and mark as turn player
+		//if player1Name and player2Name have a value and are different: hide the form, show the UI gameboard and the turn player (1)
 		if (((player1Name) && (player2Name)) && (player1Name !== player2Name)) {
 			$(this).hide()
 			$('#board').show();
@@ -101,7 +98,6 @@ $(function() {
 			turnCount = 0;
 		} else {
 
-			//if the names weren't valid
 			alert('Please enter a name for each player (names must be different)')
 		}
 		event.preventDefault();
@@ -142,12 +138,11 @@ $(function() {
 		});
 	});
 
-	//when a '.reset-button' is clicked
 	$('button.reset-button').click(function() {
 
-		//empty the UI board and Board object of all data
-		$('.board-square').empty();
+		//empty the UI board and Board object of all data then hide the pop-up
 		gameBoard.reset(gameBoard);
+		$('.board-square').empty();
 		$('.reset-button').hide();
 		$('#game-messages').modal('hide');
 
@@ -162,7 +157,7 @@ $(function() {
 		$('#turn-player-mark').text(player1.mark);
 		$('#turn-guide').removeClass('invisible');
 
-		//if the button that was clicked also has the class 'new-players', hide the board, clear the form and display the form
+		//if the button that was clicked also has the class 'new-players', hide the board, clear and display the form
 		if ($(this).hasClass('new-players')) {
 			$('#board').hide();
 			$('form#players').show().trigger('reset');
