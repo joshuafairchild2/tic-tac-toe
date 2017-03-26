@@ -58,7 +58,7 @@ html, body, #body-wrapper {
 
 #turn-guide {
   text-align: center;
-  margin: 0 0 20px 0;
+  margin: 40px 0 20px 0;
   font-family: fjalla one;
   font-size: 20pt;
 }
@@ -74,6 +74,7 @@ html, body, #body-wrapper {
 
 #game-messages {
   font-family: fjalla one;
+  margin-top: 200px;
 }
 
 #row1 {
