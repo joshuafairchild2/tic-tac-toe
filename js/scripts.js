@@ -127,11 +127,13 @@ $(function() {
 				if (gameBoard.checkForWin(gameBoard)) {
 					$('#game-messages').modal('show');
 					$('#victory, .victory').show();
+					$('#tie, .tie').hide();
 					$('span#winner-name').text(turnPlayer(turnCount, player1, player2).name);
 					$('#turn-guide').addClass('invisible');
 				} else if (gameBoard.checkForTie(turnCount)) {
 					$('#game-messages').modal('show');
 					$('#tie, .tie').show();
+					$('#victory, .victory').hide();
 					$('#turn-guide').addClass('invisible');
 				}
 			}
